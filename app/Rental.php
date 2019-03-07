@@ -14,10 +14,11 @@ class Rental extends Model
         'movie_id', 'user_id', 'rent_date', 'return_date', 'disc_type'
     ];
     
-    public function movie(){
-        
+    public function movie()
+    {
         return $this->belongsTo('App\Movie');
         
     }
     
 }
+
