@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Movie;
 
 class ApiMovieController extends Controller
 {
@@ -14,6 +15,7 @@ class ApiMovieController extends Controller
     public function index()
     {
         //
+	return Movie::get();
     }
 
     /**
@@ -22,9 +24,14 @@ class ApiMovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function rentals($id)
     {
         //
+	$rentals = Movie::where('id', $id)
+	->with('rentals')
+	->get();
+
+	return $rentals;
     }
 
     /**
@@ -36,6 +43,7 @@ class ApiMovieController extends Controller
     public function show($id)
     {
         //
+	return Movie::find($id);
     }
 
     /**
